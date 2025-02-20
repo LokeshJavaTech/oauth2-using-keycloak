@@ -92,3 +92,13 @@ Instead of manually creating the access token and copying into actual request, w
 5. Click Send on the request, and it will become successful.
 
 
+# Adding Authorization using ROLES - Client Credential Grant Type flow
+
+1. Add ROLE inside Keycloak server:
+   1. Inside `user_dev_realm` realm, go to 'Realm roles' and create role `User_CallCenter_Role`
+2. Go to 'Clients', inside client id `user_cc_clientid`
+3. Go to 'Service account roles' and Assign role `User_CallCenter_Role`
+4. Update Micro Service SecurityConfig to check for role `User_CallCenter_Role` and add Converter to convert roles from Jwt token to Spring Security GrantedAuthority
+5. Now we can check role `User_CallCenter_Role` will be coming inside the JWT token and all the microservice APIs are accessible
+
+
